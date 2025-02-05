@@ -20,3 +20,68 @@ Este projeto é uma API simples para criptografar e descriptografar textos usand
    ```bash
    git clone https://github.com/seu-usuario/seu-repositorio.git
    cd seu-repositorio
+
+Instale as dependências:
+
+bash
+Copiar
+pip install -r requirements.txt
+Caso o arquivo requirements.txt não exista, você pode instalar as dependências manualmente:
+
+bash
+Copiar
+pip install fastapi uvicorn cryptography
+Executando a API
+Para iniciar o servidor da API, execute o comando:
+
+bash
+Copiar
+uvicorn main:app --host 0.0.0.0 --port 8000
+Observação: O comando acima assume que o arquivo principal se chama main.py. Caso o nome seja outro, ajuste o comando (<nome_do_arquivo>:app).
+
+Endpoints
+1. Criptografia
+URL: /encrypt
+
+Método: POST
+
+Payload de Exemplo:
+
+json
+Copiar
+{
+  "text": "Olá, mundo!",
+  "key": null
+}
+Caso queira usar uma chave específica, ela deve ser enviada em base64 e ter exatamente 32 bytes (256 bits).
+
+Resposta de Sucesso:
+
+json
+Copiar
+{
+  "encrypted_text": "texto_em_base64",
+  "iv": "vetor_de_inicializacao_em_base64",
+  "key": "chave_em_base64"
+}
+2. Descriptografia
+URL: /decrypt
+
+Método: POST
+
+Payload de Exemplo:
+
+json
+Copiar
+{
+  "encrypted_text": "texto_em_base64",
+  "key": "chave_em_base64",
+  "iv": "vetor_de_inicializacao_em_base64"
+}
+Resposta de Sucesso:
+
+json
+Copiar
+{
+  "decrypted_text": "Olá, mundo!"
+}
