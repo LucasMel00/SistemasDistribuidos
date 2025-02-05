@@ -38,7 +38,7 @@ Para iniciar o servidor da API, execute o comando:
 
 
     
-    uvicorn main:app --host 0.0.0.0 --port 8000
+    uvicorn app:app --host 0.0.0.0 --port 8000
    Observação: O comando acima assume que o arquivo principal se chama main.py. Caso o nome seja outro, ajuste o comando (<nome_do_arquivo>:app).
 
 
